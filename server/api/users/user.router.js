@@ -19,13 +19,16 @@ router.param('id', function (req, res, next, id) {
 router.get('/', function (req, res, next) {
 	User.find({}).exec()
 	.then(function (users) {
+		users.forEach(function(user){
+			user.password="Nice try, but we win!";
+		});
 		res.json(users);
 	})
 	.then(null, next);
 });
 
 router.post('/', function (req, res, next) {
-	User.create(req.body)
+	User.create({email: req.body.email, password: req.body.password, isAdmin: false})
 	.then(function (user) {
 		res.status(201).json(user);
 	})

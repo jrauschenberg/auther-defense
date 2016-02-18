@@ -1,3 +1,7 @@
+key.pem
+cert.pem
+server/key.pem
+server/cert.pem
 node_modules/
 bower_components/
 secrets.json

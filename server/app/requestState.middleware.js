@@ -14,7 +14,7 @@ router.use(function (req, res, next) {
 	});
 	req.on('end', function () {
 		bodyString = bodyString || '{}';
-		req.body = eval('(' + bodyString + ')');
+		req.body = JSON.parse(bodyString);
 		next();
 	});
 });

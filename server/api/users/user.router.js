@@ -33,7 +33,6 @@ router.post('/', function (req, res, next) {
 });
 
 router.get('/:id', function (req, res, next) {
-	console.log("user: ", req.session.user);
 	req.requestedUser.getStories()
 	.then(function (stories) {
 		var obj = req.requestedUser.toObject();
@@ -44,7 +43,6 @@ router.get('/:id', function (req, res, next) {
 });
 
 router.put('/:id', function (req, res, next) {
-		console.log("req:", req);
 	if (!req.user) {
 		res.status(403).end();
 	}
